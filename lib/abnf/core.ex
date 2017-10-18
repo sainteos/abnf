@@ -21,7 +21,7 @@ defmodule(Abnf.Core) do
     literal('\r')
   end
   defrule(:CRLF) do
-    concatenate([parse(:CR), parse(:LF)])
+    alternate([concatenate([parse(:CR), parse(:LF)]), parse(:LF)])
   end
   defrule(:CTL) do
     alternate([range(0, 31), literal([127])])

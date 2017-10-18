@@ -9,8 +9,11 @@ CHAR           =  %x01-7F
 CR             =  %x0D
                       ; carriage return
 
-CRLF           =  CR LF
+CRLF           =  CR LF / LF
                       ; Internet standard newline
+                      ; OR just LF (\n) for unix style newline
+                      ; This is a deviation from the standard
+                      ; for convenience
 
 CTL            =  %x00-1F / %x7F
                       ; controls
