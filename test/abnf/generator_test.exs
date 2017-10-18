@@ -7,7 +7,7 @@ defmodule Abnf.GeneratorTest do
     defrule(:DQUOTE) do
       literal('"')
     end
-    """ |> String.rstrip
+    """ |> String.trim_trailing
 
     generated_rulelist = Generator.generate({:rule, "DQUOTE = %x22\r\n", [
       {:rulename, "DQUOTE", [

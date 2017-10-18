@@ -2,18 +2,22 @@ defmodule Abnf.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :abnf,
-     version: "0.0.1",
-     elixir: "~> 1.1",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     deps: deps,
-     aliases: aliases,
-     package: package]
+    [
+       app: :abnf,
+       version: "0.0.1",
+       elixir: "~> 1.5",
+       build_embedded: Mix.env == :prod,
+       start_permanent: Mix.env == :prod,
+       deps: deps(),
+       aliases: aliases(),
+       package: package()
+    ]
   end
 
   def application do
-    [applications: [:logger]]
+    [
+      extra_applications: [:logger]
+    ]
   end
 
   defp deps do
@@ -21,16 +25,19 @@ defmodule Abnf.Mixfile do
   end
 
   defp package do
-    [description: "ABNF parser for Elixir",
-     licenses: ["MIT"],
-     files: ["lib", "priv", "mix.exs", "README.md"],
-     links: %{"GitHub" => "https://github.com/vanstee/abnf"}]
+    [
+      description: "ABNF parser generator for Elixir",
+      licenses: ["MIT"],
+      files: ["lib", "priv", "mix.exs", "README.md"],
+      links: %{"GitHub" => "https://github.com/vanstee/abnf"}]
   end
 
   defp aliases do
-    ["generate": "abnf.generate",
-     "generate.core": &generate_core/1,
-     "generate.rfc5234": &generate_rfc5234/1]
+    [
+      "generate": "abnf.generate",
+      "generate.core": &generate_core/1,
+      "generate.rfc5234": &generate_rfc5234/1
+    ]
   end
 
   defp generate_core(_) do

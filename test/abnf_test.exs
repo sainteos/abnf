@@ -14,7 +14,7 @@ defmodule AbnfTest do
     defrule(:DQUOTE) do
       literal('"')
     end
-    """ |> String.rstrip
+    """ |> String.trim_trailing
 
     actual_rulelist = Rfc5234.parse(:rule, "DQUOTE = %x22\r\n")
     |> List.first
@@ -30,7 +30,7 @@ defmodule AbnfTest do
       alternate([literal('0'), literal('1')])
     end
     """
-    |> String.rstrip
+    |> String.trim_trailing
 
     actual_rulelist = Rfc5234.parse(:rule, ~s(BIT = "0" / "1"\r\n))
     |> List.first
@@ -48,7 +48,7 @@ defmodule AbnfTest do
       literal('"')
     end
     """
-    |> String.rstrip
+    |> String.trim_trailing
 
     actual_rulelist = module.parse(:rule, "DQUOTE = %x22\r\n")
     |> List.first

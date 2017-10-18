@@ -17,7 +17,7 @@ defmodule Mix.Tasks.Abnf.Generate do
 
   defp write_code(quoted_module, dest) do
     module_code = Macro.to_string(quoted_module)
-    File.write!(dest, generated_comment <> module_code)
+    File.write!(dest, generated_comment() <> module_code)
     IO.puts("Generated #{dest}")
   end
 

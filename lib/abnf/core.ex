@@ -3,7 +3,7 @@
 defmodule(Abnf.Core) do
   import(Abnf.Operators)
   def(parse(rule, input) when is_binary(input)) do
-    parse(rule, String.to_char_list(input))
+    parse(rule, String.to_charlist(input))
   end
   def(parse(rule, input)) do
     parse(rule).(input)

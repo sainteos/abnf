@@ -132,7 +132,7 @@ defmodule Abnf.Operators do
   def advance(children, input) do
     children
     |> preview
-    |> String.to_char_list
+    |> String.to_charlist
     |> string_subtract(input)
   end
 

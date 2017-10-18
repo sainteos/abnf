@@ -1,6 +1,6 @@
 defmodule Abnf.Generator do
   def generate([{:rulelist, _preview, _children} = rulelist], module) do
-    parsers = [parse_helpers, generate(rulelist), forwarder(module)]
+    parsers = [parse_helpers(), generate(rulelist), forwarder(module)]
     |> Enum.reject(&is_nil/1)
     |> List.flatten
 
@@ -117,7 +117,7 @@ defmodule Abnf.Generator do
     char_val = children
     |> Enum.filter(&match?({:literal, _, []}, &1))
     |> Enum.map_join(&elem(&1, 1))
-    |> String.to_char_list
+    |> String.to_charlist
 
     quote do
       literal(unquote(char_val))
@@ -149,7 +149,7 @@ defmodule Abnf.Generator do
   defp parse_helpers do
     [quote do
        def parse(rule, input) when is_binary(input) do
-         parse(rule, String.to_char_list(input))
+         parse(rule, String.to_charlist(input))
        end
      end,
      quote do
