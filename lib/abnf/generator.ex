@@ -83,9 +83,9 @@ defmodule Abnf.Generator do
       [min, [{:literal, "*", []}]] ->
         {generate_digits(min), :infinity}
       [[{:literal, "*", []}], max] ->
-        {0, max}
+        {0, generate_digits(max)}
       [min, [{:literal, "*", []}], max] ->
-        {min, max}
+        {generate_digits(min), generate_digits(max)}
     end
 
     element = generate(element)

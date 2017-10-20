@@ -38,6 +38,10 @@ defmodule Abnf.Operators do
     end
   end
 
+  def literal(element, input) do
+    literal([element], input)
+  end
+
   def concatenate(elements) do
     fn input ->
       concatenate(elements, [], input)
