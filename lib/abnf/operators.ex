@@ -33,6 +33,8 @@ defmodule Abnf.Operators do
     case input do
       [^element|_] ->
         [{:literal, to_string([element]), []}]
+      ^element ->
+        [{:literal, to_string([element]), []}]
       _ ->
         :error
     end

@@ -8,12 +8,21 @@ defmodule Abnf.Mixfile do
        app: :abnf,
        version: @version,
        elixir: "~> 1.5",
+       name: "abnf2",
+       source_url: "https://github.com/kipcole9/abnf",
+       description: description(),
        build_embedded: Mix.env == :prod,
        start_permanent: Mix.env == :prod,
        deps: deps(),
        aliases: aliases(),
        package: package()
     ]
+  end
+
+  defp description do
+    """
+    An ABNF parser generator updated from the original developed by @vanstee.
+    """
   end
 
   def application do
@@ -28,10 +37,14 @@ defmodule Abnf.Mixfile do
 
   defp package do
     [
-      description: "ABNF parser generator for Elixir",
+      maintainers: ["Kip Cole"],
       licenses: ["MIT"],
       files: ["lib", "priv", "mix.exs", "README.md"],
-      links: %{"GitHub" => "https://github.com/vanstee/abnf"}]
+      links: %{
+        "GitHub" => "https://github.com/kipcole9/abnf",
+        "Original" => "https://github.com/vansee/abnf"
+      }
+    ]
   end
 
   defp aliases do
