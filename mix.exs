@@ -1,7 +1,7 @@
 defmodule Abnf.Mixfile do
   use Mix.Project
 
-  @version "0.1.2"
+  @version "0.1.4"
 
   def project do
     [
@@ -51,7 +51,7 @@ defmodule Abnf.Mixfile do
 
   defp aliases do
     [
-      "generate": "abnf.generate",
+      generate: "abnf.generate",
       "generate.core": &generate_core/1,
       "generate.rfc5234": &generate_rfc5234/1
     ]
